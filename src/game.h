@@ -11,6 +11,22 @@
 #ifndef MINESWEEPING_GAME_H
 #define MINESWEEPING_GAME_H
 
+/*
+ * 宏定义
+ */
+
+// 标题样式
+#define TITLE_STYLE         "\033[47;30;01m"
+// 副标题样式
+#define SUBTITLE_STYLE      "\033[44;30m"
+// 输入提示样式
+#define INPUT_PROMPT_STYLE  "\033[32m"
+// 输入样式
+#define INPUT_STYLE         "\033[32;01m"
+// 错误消息样式
+#define ERROR_MESSAGE_STYLE "\033[31m"
+// 清除样式
+#define CLEAR_STYLE         "\033[0m"
 
 /*
  * 数据结构定义

@@ -614,27 +614,41 @@ void GameStartScreen(Game *game) {
     system("clear");
 
     // 输出难度信息
-    printf("+------------------------------------------------------------------------------+\n");
-    printf("|                                   [  扫雷  ]                                 |\n");
-    printf("+------------------------------------------------------------------------------+\n");
-    printf("|                                                                              |\n");
-    printf("|  难度：                                                                      |\n");
-    printf("|  %d. 初级（9行 x 9列，10个地雷）                                              |\n", GAME_DIFFICULTY_LOW);
-    printf("|  %d. 中级（16行 x 16列，40个地雷）                                            |\n", GAME_DIFFICULTY_MIDDLE);
-    printf("|  %d. 高级（16行 x 30列，99个地雷）                                            |\n", GAME_DIFFICULTY_HIGH);
-    printf("|  %d. 自定义                                                                   |\n", GAME_DIFFICULTY_CUSTOMIZED);
-    printf("|                                                                              |\n");
-    printf("+------------------------------------------------------------------------------+\n\n");
+    printf(TITLE_STYLE);
+    printf("                                    [  扫雷  ]                                  \n");
+    printf(CLEAR_STYLE);
+
+    printf("\n\n");
+
+    printf(SUBTITLE_STYLE);
+    printf("[ 难度 ]\n");
+    printf(CLEAR_STYLE);
+
+    printf("\n");
+
+    printf("  %d. 初级（9行 x 9列，10个地雷）\n", GAME_DIFFICULTY_LOW);
+    printf("  %d. 中级（16行 x 16列，40个地雷）\n", GAME_DIFFICULTY_MIDDLE);
+    printf("  %d. 高级（16行 x 30列，99个地雷）\n", GAME_DIFFICULTY_HIGH);
+    printf("  %d. 自定义\n", GAME_DIFFICULTY_CUSTOMIZED);
+
+    printf("\n");
 
     // 选择难度
     do {
+        printf(INPUT_PROMPT_STYLE);
         printf("请选择难度：");
+        printf(CLEAR_STYLE);
+
+        printf(INPUT_STYLE);
         scanf("%d", &difficulty);
+        printf(CLEAR_STYLE);
 
         is_valid = difficulty >= GAME_DIFFICULTY_CUSTOMIZED && difficulty <= GAME_DIFFICULTY_HIGH;
 
         if (! is_valid) {
+            printf(ERROR_MESSAGE_STYLE);
             printf("请输入正确的编号！\n");
+            printf(CLEAR_STYLE);
         }
     } while (! is_valid);
 
@@ -661,36 +675,55 @@ void GameStartScreen(Game *game) {
     else {
         // 输入行数
         do {
+            printf(INPUT_PROMPT_STYLE);
             printf("行数：");
+            printf(CLEAR_STYLE);
+
+            printf(INPUT_STYLE);
             scanf("%d", &rows);
+            printf(CLEAR_STYLE);
 
             min = 2;
             max = INT16_MAX;
             is_valid = rows >= min && rows <= max;
 
             if (! is_valid) {
+                printf(ERROR_MESSAGE_STYLE);
                 printf("行数范围：%d ~ %d！\n", min, max);
+                printf(CLEAR_STYLE);
             }
         } while (! is_valid);
 
         // 输入列数
         do {
+            printf(INPUT_PROMPT_STYLE);
             printf("列数：");
+            printf(CLEAR_STYLE);
+
+            printf(INPUT_STYLE);
             scanf("%d", &columns);
+            printf(CLEAR_STYLE);
 
             min = 2;
             max = INT16_MAX;
             is_valid = columns >= min && columns <= max;
 
             if (! is_valid) {
+                printf(ERROR_MESSAGE_STYLE);
                 printf("列数范围：%d ~ %d！\n", min, max);
+                printf(CLEAR_STYLE);
             }
         } while (! is_valid);
 
         // 输入地雷数
         do {
+            printf(INPUT_PROMPT_STYLE);
             printf("地雷数：");
+            printf(CLEAR_STYLE);
+
+            printf(INPUT_STYLE);
             scanf("%d", &mines);
+            printf(CLEAR_STYLE);
 
             // 合格条件：地雷数≥1，地雷比率≥5%，且≤90%
             min = (int)(rows * columns * 0.05) >= 1 ? (int)(rows * columns * 0.05) : 1;
@@ -698,7 +731,9 @@ void GameStartScreen(Game *game) {
             is_valid = mines >= min && mines <= max;
 
             if (! is_valid) {
+                printf(ERROR_MESSAGE_STYLE);
                 printf("地雷数范围：%d ~ %d！\n", min, max);
+                printf(CLEAR_STYLE);
             }
         } while (! is_valid);
     }
