@@ -924,10 +924,10 @@ void GameProcessScreen(Game *game) {
             scanf("%d%d%s", &row, &column, directive);
             printf(CLEAR_STYLE);
 
-            if (strcmp(directive, "V") == 0) {
+            if (strcmp(directive, "V") == 0 || strcmp(directive, "v") == 0) {
                 is_valid = 1;
                 status = BLOCK_STATUS_VISIBLE;
-            } else if (strcmp(directive, "F") == 0) {
+            } else if (strcmp(directive, "F") == 0 || strcmp(directive, "f") == 0) {
                 is_valid = 1;
                 status = BLOCK_STATUS_FLAG;
             } else if (strcmp(directive, "?") == 0) {
