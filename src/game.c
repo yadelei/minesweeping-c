@@ -924,18 +924,25 @@ void GameEndScreen(Game *game) {
     // 清空控制台
     system("clear");
 
-    // 输出难度信息
-    printf("+------------------------------------------------------------------------------+\n");
-    printf("|                                   [  扫雷  ]                                 |\n");
-    printf("+------------------------------------------------------------------------------+\n");
-    printf("|                                                                              |\n");
+    // 输出结果信息
+    printf(TITLE_STYLE);
+    printf("                                    [  扫雷  ]                                  \n");
+    printf(CLEAR_STYLE);
+
+    printf("\n");
+    printf("    ");
+
     if (game->is_winning) {
-        printf("|  恭喜，您已扫出所有地雷，游戏胜利！                                          |\n");
+        printf(VICTORY_STYLE);
+        printf("恭喜，您已扫出所有地雷，游戏胜利！\n");
+        printf(CLEAR_STYLE);
     } else {
-        printf("|  很遗憾，您踩到了地雷，游戏失败！                                            |\n");
+        printf(DEFEAT_STYLE);
+        printf("很遗憾，您踩到了地雷，游戏失败！\n");
+        printf(CLEAR_STYLE);
     }
-    printf("|                                                                              |\n");
-    printf("+------------------------------------------------------------------------------+\n\n");
+
+    printf("\n");
 
     PrintMap(game->map);
 

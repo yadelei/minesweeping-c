@@ -27,6 +27,10 @@
 #define ERROR_MESSAGE_STYLE "\033[31m"
 // 强调样式
 #define HIGHLIGHT_STYLE     "\033[33;01m"
+// 胜利样式
+#define VICTORY_STYLE       "\033[32;01;05m"
+// 失败样式
+#define DEFEAT_STYLE        "\033[31;01;05m"
 // 清除样式
 #define CLEAR_STYLE         "\033[0m"
 
