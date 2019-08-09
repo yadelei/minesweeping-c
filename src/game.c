@@ -314,6 +314,7 @@ void PrintMap(Map *map) {
      */
 
     // 第一行
+    printf(BLOCK_TABLE_STYLE);
     // 前导空格
     for (i = 0; i < row_number_width + 1; i++) {
         printf(" ");
@@ -336,6 +337,7 @@ void PrintMap(Map *map) {
         }
     }
     printf("+\n");
+    printf(CLEAR_STYLE);
 
     /*
      * 打印每一行
@@ -343,28 +345,42 @@ void PrintMap(Map *map) {
     for (row = 0; row < map->number_of_rows; row++) {
         // 第一行
         // 行编号
+        printf(BLOCK_TABLE_STYLE);
         printf(row_number_conversion, row + 1);
+        printf(CLEAR_STYLE);
+
         // 行方块
         for (column = 0; column < map->number_of_columns; column++) {
+            printf(BLOCK_TABLE_STYLE);
             printf("|");
             // 左边空格
-            for (i = 0; i < (column_number_width - 1) / 2; i++) {
+            for (i = 0; i < (column_number_width - 1) / 2 - 1; i++) {
                 printf(" ");
             }
-
+            printf(CLEAR_STYLE);
             // 打印标识字符
             if (map->blocks[row][column].status == BLOCK_STATUS_INVISIBLE) {
-                printf("#");
+                printf(INVISIBLE_BLOCK_STYLE);
+                printf("   ");
+                printf(CLEAR_STYLE);
             } else if (map->blocks[row][column].status == BLOCK_STATUS_FLAG) {
-                printf("F");
+                printf(FLAG_BLOCK_STYLE);
+                printf(" F ");
+                printf(CLEAR_STYLE);
             } else if (map->blocks[row][column].status == BLOCK_STATUS_DOUBT) {
-                printf("?");
+                printf(DOUBT_BLOCK_STYLE);
+                printf(" ? ");
+                printf(CLEAR_STYLE);
             } else if (map->blocks[row][column].type == BLOCK_TYPE_BLANK) {
-                printf(" ");
+                printf("   ");
             } else if (map->blocks[row][column].type >= BLOCK_TYPE_NUMBER_1 && map->blocks[row][column].type <= BLOCK_TYPE_NUMBER_8) {
-                printf("%d", map->blocks[row][column].type);
+                printf(NUMBER_BLOCK_STYLE);
+                printf(" %d ", map->blocks[row][column].type);
+                printf(CLEAR_STYLE);
             } else {
-                printf("*");
+                printf(MINE_BLOCK_STYLE);
+                printf(" * ");
+                printf(CLEAR_STYLE);
             }
 
 //            if (map->blocks[row][column].type == BLOCK_TYPE_BLANK) {
@@ -376,12 +392,17 @@ void PrintMap(Map *map) {
 //            }
 
             // 右边空格
-            for (i = 0; i < (column_number_width - 1) - ((column_number_width - 1) / 2); i++) {
+            printf(BLOCK_TABLE_STYLE);
+            for (i = 0; i < (column_number_width - 1) - ((column_number_width - 1) / 2) - 1; i++) {
                 printf(" ");
             }
+            printf(CLEAR_STYLE);
         }
+        printf(BLOCK_TABLE_STYLE);
         printf("|\n");
+        printf(CLEAR_STYLE);
         // 第二行
+        printf(BLOCK_TABLE_STYLE);
         // 前导空格
         for (i = 0; i < row_number_width + 1; i++) {
             printf(" ");
@@ -394,6 +415,7 @@ void PrintMap(Map *map) {
             }
         }
         printf("+\n");
+        printf(CLEAR_STYLE);
     }
 }
 

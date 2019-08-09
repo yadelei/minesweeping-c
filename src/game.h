@@ -16,23 +16,35 @@
  */
 
 // 标题样式
-#define TITLE_STYLE         "\033[47;30;01m"
+#define TITLE_STYLE           "\033[47;30;01m"
 // 副标题样式
-#define SUBTITLE_STYLE      "\033[44;30m"
+#define SUBTITLE_STYLE        "\033[44;37m"
 // 输入提示样式
-#define INPUT_PROMPT_STYLE  "\033[32m"
+#define INPUT_PROMPT_STYLE    "\033[32m"
 // 输入样式
-#define INPUT_STYLE         "\033[32;01m"
+#define INPUT_STYLE           "\033[32;01m"
 // 错误消息样式
-#define ERROR_MESSAGE_STYLE "\033[31m"
+#define ERROR_MESSAGE_STYLE   "\033[31m"
 // 强调样式
-#define HIGHLIGHT_STYLE     "\033[33;01m"
+#define HIGHLIGHT_STYLE       "\033[33;01m"
 // 胜利样式
-#define VICTORY_STYLE       "\033[32;01;05m"
+#define VICTORY_STYLE         "\033[32;01;05m"
 // 失败样式
-#define DEFEAT_STYLE        "\033[31;01;05m"
+#define DEFEAT_STYLE          "\033[31;01;05m"
+// 方块表样式
+#define BLOCK_TABLE_STYLE     ""
+// 不可见方块样式
+#define INVISIBLE_BLOCK_STYLE "\033[44;01m"
+// 旗标方块样式
+#define FLAG_BLOCK_STYLE      "\033[44;37;01m"
+// 疑问标方块样式
+#define DOUBT_BLOCK_STYLE     "\033[44;37;01m"
+// 数字方块样式
+#define NUMBER_BLOCK_STYLE    "\033[34;01m"
+// 地雷方块样式
+#define MINE_BLOCK_STYLE      "\033[41;37;01m"
 // 清除样式
-#define CLEAR_STYLE         "\033[0m"
+#define CLEAR_STYLE           "\033[0m"
 
 /*
  * 数据结构定义
