@@ -288,6 +288,10 @@ void PrintMap(Map *map) {
     int n;
     // 循环下标
     int i;
+    // 输出宽度
+    int width;
+    // 居中前导空格数
+    int center_prefix_space_number;
 
     // 计算行编号最大数字位数
     n = map->number_of_rows;
@@ -309,13 +313,22 @@ void PrintMap(Map *map) {
     // 计算列编号转换说明
     sprintf(column_number_conversion, " %%-%dd", column_number_width);
 
+    // 计算输出宽度
+    width = row_number_width + 1 + (1 + column_number_width) * map->number_of_columns + 1;
+    // 计算居中前导空格数
+    center_prefix_space_number = (CONSOLE_WIDTH - width) / 2;
+
     /*
      * 打印表头
      */
 
     // 第一行
     printf(BLOCK_TABLE_STYLE);
-    // 前导空格
+    // 居中前导空格
+    for (i = 0; i < center_prefix_space_number; i++) {
+        printf(" ");
+    }
+    // 表格前导空格
     for (i = 0; i < row_number_width + 1; i++) {
         printf(" ");
     }
@@ -325,7 +338,11 @@ void PrintMap(Map *map) {
     }
     printf(" \n");
     // 第二行
-    // 前导空格
+    // 居中前导空格
+    for (i = 0; i < center_prefix_space_number; i++) {
+        printf(" ");
+    }
+    // 表格前导空格
     for (i = 0; i < row_number_width + 1; i++) {
         printf(" ");
     }
@@ -344,6 +361,10 @@ void PrintMap(Map *map) {
      */
     for (row = 0; row < map->number_of_rows; row++) {
         // 第一行
+        // 居中前导空格
+        for (i = 0; i < center_prefix_space_number; i++) {
+            printf(" ");
+        }
         // 行编号
         printf(BLOCK_TABLE_STYLE);
         printf(row_number_conversion, row + 1);
@@ -403,7 +424,11 @@ void PrintMap(Map *map) {
         printf(CLEAR_STYLE);
         // 第二行
         printf(BLOCK_TABLE_STYLE);
-        // 前导空格
+        // 居中前导空格
+        for (i = 0; i < center_prefix_space_number; i++) {
+            printf(" ");
+        }
+        // 表格前导空格
         for (i = 0; i < row_number_width + 1; i++) {
             printf(" ");
         }

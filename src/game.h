@@ -15,6 +15,9 @@
  * 宏定义
  */
 
+// 控制台宽度
+#define CONSOLE_WIDTH 80
+
 // 标题样式
 #define TITLE_STYLE           "\033[47;30;01m"
 // 副标题样式
