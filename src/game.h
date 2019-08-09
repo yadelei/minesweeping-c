@@ -25,6 +25,8 @@
 #define INPUT_STYLE         "\033[32;01m"
 // 错误消息样式
 #define ERROR_MESSAGE_STYLE "\033[31m"
+// 强调样式
+#define HIGHLIGHT_STYLE     "\033[33;01m"
 // 清除样式
 #define CLEAR_STYLE         "\033[0m"
 

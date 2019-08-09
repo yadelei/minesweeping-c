@@ -626,10 +626,10 @@ void GameStartScreen(Game *game) {
 
     printf("\n");
 
-    printf("  %d. 初级（9行 x 9列，10个地雷）\n", GAME_DIFFICULTY_LOW);
-    printf("  %d. 中级（16行 x 16列，40个地雷）\n", GAME_DIFFICULTY_MIDDLE);
-    printf("  %d. 高级（16行 x 30列，99个地雷）\n", GAME_DIFFICULTY_HIGH);
-    printf("  %d. 自定义\n", GAME_DIFFICULTY_CUSTOMIZED);
+    printf("    %d. 初级（9行 x 9列，10个地雷）\n", GAME_DIFFICULTY_LOW);
+    printf("    %d. 中级（16行 x 16列，40个地雷）\n", GAME_DIFFICULTY_MIDDLE);
+    printf("    %d. 高级（16行 x 30列，99个地雷）\n", GAME_DIFFICULTY_HIGH);
+    printf("    %d. 自定义\n", GAME_DIFFICULTY_CUSTOMIZED);
 
     printf("\n");
 
@@ -764,35 +764,118 @@ void GameProcessScreen(Game *game) {
         // 清空控制台
         system("clear");
 
-        printf("+------------------------------------------------------------------------------+\n");
-        printf("|                                   [  扫雷  ]                                 |\n");
-        printf("+------------------------------------------------------------------------------+\n\n\n");
+        printf(TITLE_STYLE);
+        printf("                                    [  扫雷  ]                                  \n");
+        printf(CLEAR_STYLE);
+
+        printf("\n\n");
 
         // 打印地图
         PrintMap(game->map);
 
+        printf("\n\n");
+
         // 打印统计信息
-        printf("\n\n--[ 统计信息 ]------------------------------------------------------------------\n");
-        printf("行数：%-8d        列数：%-8d        方块总数：%-8d地雷总数：%-8d\n",
-                game->map->number_of_rows, game->map->number_of_columns,
-                game->map->number_of_blocks, game->map->number_of_mines);
-        printf("已翻开方块数：%-8d未翻开方块数：%-8d旗标数：%-8d  疑问标数：%-8d\n",
-                game->map->number_of_visible_blocks, game->map->number_of_invisible_blocks,
-                game->map->number_of_flags, game->map->number_of_doubts);
+        printf(SUBTITLE_STYLE);
+        printf("[ 统计信息 ]\n");
+        printf(CLEAR_STYLE);
+
+        printf("    ");
+
+        printf("行数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-13d", game->map->number_of_rows);
+        printf(CLEAR_STYLE);
+
+        printf("列数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-13d", game->map->number_of_columns);
+        printf(CLEAR_STYLE);
+
+        printf("方块总数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-9d", game->map->number_of_blocks);
+        printf(CLEAR_STYLE);
+
+        printf("地雷数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-11d", game->map->number_of_mines);
+        printf(CLEAR_STYLE);
+
+        printf("\n");
+        printf("    ");
+
+        printf("已翻开方块数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-5d", game->map->number_of_visible_blocks);
+        printf(CLEAR_STYLE);
+
+        printf("未翻开方块数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-5d", game->map->number_of_invisible_blocks);
+        printf(CLEAR_STYLE);
+
+        printf("旗标数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-11d", game->map->number_of_flags);
+        printf(CLEAR_STYLE);
+
+        printf("疑问标数: ");
+        printf(HIGHLIGHT_STYLE);
+        printf("%-9d", game->map->number_of_doubts);
+        printf(CLEAR_STYLE);
+
+        printf("\n\n");
 
         // 打印操作方法
-        printf("\n--[ 操作说明 ]------------------------------------------------------------------\n");
-        printf("命令行格式：\n");
-        printf("    行编号 列编号 方块操作指令\n\n");
-        printf("方块操作指令：\n");
-        printf("    V: 将一个未翻开的方块翻开\n");
-        printf("    F: 对一个未翻开的方块设置小旗标记，表示此处确定有地雷\n");
-        printf("    ?: 对一个未翻开的方块设置疑问标记，表示此处可能有地雷\n");
-        printf("    #: 清除一个未翻开的方块上的任何标记\n");
+        printf(SUBTITLE_STYLE);
+        printf("[ 操作说明 ]\n");
+        printf(CLEAR_STYLE);
+
+        printf("    命令行格式：\n");
+
+        printf("        ");
+        printf(HIGHLIGHT_STYLE);
+        printf("行编号 列编号 方块操作指令\n");
+        printf(CLEAR_STYLE);
+        printf("\n");
+
+        printf("    方块操作指令：\n");
+
+        printf("        ");
+        printf(HIGHLIGHT_STYLE);
+        printf("V");
+        printf(CLEAR_STYLE);
+        printf(": 将一个未翻开的方块翻开\n");
+
+        printf("        ");
+        printf(HIGHLIGHT_STYLE);
+        printf("F");
+        printf(CLEAR_STYLE);
+        printf(": 对一个未翻开的方块设置小旗标记，表示此处确定有地雷\n");
+
+        printf("        ");
+        printf(HIGHLIGHT_STYLE);
+        printf("?");
+        printf(CLEAR_STYLE);
+        printf(": 对一个未翻开的方块设置疑问标记，表示此处可能有地雷\n");
+
+        printf("        ");
+        printf(HIGHLIGHT_STYLE);
+        printf("#");
+        printf(CLEAR_STYLE);
+        printf(": 清除一个未翻开的方块上的任何标记\n");
+
+        printf("\n");
 
         do {
+            printf(INPUT_PROMPT_STYLE);
             printf("命令行：");
+            printf(CLEAR_STYLE);
+
+            printf(INPUT_STYLE);
             scanf("%d%d%s", &row, &column, directive);
+            printf(CLEAR_STYLE);
 
             if (strcmp(directive, "V") == 0) {
                 is_valid = 1;
@@ -811,7 +894,9 @@ void GameProcessScreen(Game *game) {
             }
 
             if (! is_valid) {
+                printf(ERROR_MESSAGE_STYLE);
                 printf("请输入正确的命令行！\n");
+                printf(CLEAR_STYLE);
             }
         } while (! is_valid);
 
