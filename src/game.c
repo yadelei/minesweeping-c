@@ -663,7 +663,7 @@ void GameStartScreen(Game *game) {
 
     // 输出难度信息
     printf(TITLE_STYLE);
-    printf("                                    [  扫雷  ]                                  \n");
+    printf("                                   [  扫雷  ]                                   \n");
     printf(CLEAR_STYLE);
 
     printf("\n\n");
@@ -674,12 +674,14 @@ void GameStartScreen(Game *game) {
 
     printf("\n");
 
-    printf("    %d. 初级（9行 x 9列，10个地雷）\n", GAME_DIFFICULTY_LOW);
+    printf("    %d. 初级（ 9行 x 9列 ，10个地雷）\n", GAME_DIFFICULTY_LOW);
     printf("    %d. 中级（16行 x 16列，40个地雷）\n", GAME_DIFFICULTY_MIDDLE);
     printf("    %d. 高级（16行 x 30列，99个地雷）\n", GAME_DIFFICULTY_HIGH);
     printf("    %d. 自定义\n", GAME_DIFFICULTY_CUSTOMIZED);
 
     printf("\n");
+
+    printf(SEPARATOR);
 
     // 选择难度
     do {
@@ -809,11 +811,13 @@ void GameProcessScreen(Game *game) {
 
     // 当游戏未结束时一直执行
     while (! game->is_finished) {
+        // 换行，解决输入多个命令行时上一个界面的输入提示挤占本次界面顶部的问题
+        printf("\n");
         // 清空控制台
         system("clear");
 
         printf(TITLE_STYLE);
-        printf("                                    [  扫雷  ]                                  \n");
+        printf("                                   [  扫雷  ]                                   \n");
         printf(CLEAR_STYLE);
 
         printf("\n\n");
@@ -886,7 +890,6 @@ void GameProcessScreen(Game *game) {
         printf(HIGHLIGHT_STYLE);
         printf("行编号 列编号 方块操作指令\n");
         printf(CLEAR_STYLE);
-        printf("\n");
 
         printf("    方块操作指令：\n");
 
@@ -910,11 +913,15 @@ void GameProcessScreen(Game *game) {
 
         printf("        ");
         printf(HIGHLIGHT_STYLE);
-        printf("#");
+        printf("C");
         printf(CLEAR_STYLE);
         printf(": 清除一个未翻开的方块上的任何标记\n");
 
+        printf("    可同时输入多个完整的命令行\n");
+
         printf("\n");
+
+        printf(SEPARATOR);
 
         do {
             printf(INPUT_PROMPT_STYLE);
@@ -934,7 +941,7 @@ void GameProcessScreen(Game *game) {
             } else if (strcmp(directive, "?") == 0) {
                 is_valid = 1;
                 status = BLOCK_STATUS_DOUBT;
-            } else if (strcmp(directive, "#") == 0) {
+            } else if (strcmp(directive, "C") == 0 || strcmp(directive, "c") == 0) {
                 is_valid = 1;
                 status = BLOCK_STATUS_INVISIBLE;
             } else {
@@ -974,7 +981,7 @@ void GameEndScreen(Game *game) {
 
     // 输出结果信息
     printf(TITLE_STYLE);
-    printf("                                    [  扫雷  ]                                  \n");
+    printf("                                   [  扫雷  ]                                   \n");
     printf(CLEAR_STYLE);
 
     printf("\n\n");
@@ -991,9 +998,13 @@ void GameEndScreen(Game *game) {
         printf(CLEAR_STYLE);
     }
 
-    printf("\n\n");
+    printf("\n");
+
+    printf(SEPARATOR);
+
+    printf("\n");
 
     PrintMap(game->map);
 
-    printf("\n");
+    printf("\n\n");
 }

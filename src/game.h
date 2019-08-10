@@ -21,7 +21,7 @@
 // 标题样式
 #define TITLE_STYLE           "\033[47;30;01m"
 // 副标题样式
-#define SUBTITLE_STYLE        "\033[44;37m"
+#define SUBTITLE_STYLE        "\033[47;30m"
 // 输入提示样式
 #define INPUT_PROMPT_STYLE    "\033[32m"
 // 输入样式
@@ -31,9 +31,9 @@
 // 强调样式
 #define HIGHLIGHT_STYLE       "\033[33;01m"
 // 胜利样式
-#define VICTORY_STYLE         "\033[32;01;05m"
+#define VICTORY_STYLE         "\033[32;01;05m\a\a\a"
 // 失败样式
-#define DEFEAT_STYLE          "\033[31;01;05m"
+#define DEFEAT_STYLE          "\033[31;01;05m\a"
 // 方块表样式
 #define BLOCK_TABLE_STYLE     ""
 // 不可见方块样式
@@ -48,6 +48,9 @@
 #define MINE_BLOCK_STYLE      "\033[41;37;01m"
 // 清除样式
 #define CLEAR_STYLE           "\033[0m"
+
+// 分隔线
+#define SEPARATOR             "\033[4m                                                                                \033[0m\n\n"
 
 /*
  * 数据结构定义
