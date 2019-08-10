@@ -674,7 +674,7 @@ void GameStartScreen(Game *game) {
 
     printf("\n");
 
-    printf("    %d. 初级（ 9行 x 9列 ，10个地雷）\n", GAME_DIFFICULTY_LOW);
+    printf("    %d. 初级（ 9行 x  9列，10个地雷）\n", GAME_DIFFICULTY_LOW);
     printf("    %d. 中级（16行 x 16列，40个地雷）\n", GAME_DIFFICULTY_MIDDLE);
     printf("    %d. 高级（16行 x 30列，99个地雷）\n", GAME_DIFFICULTY_HIGH);
     printf("    %d. 自定义\n", GAME_DIFFICULTY_CUSTOMIZED);
