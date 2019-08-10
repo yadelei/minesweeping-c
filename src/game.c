@@ -13,6 +13,7 @@
 #include <time.h>
 #include <ctype.h>
 #include <string.h>
+#include <limits.h>
 
 #include "game.h"
 
@@ -731,7 +732,7 @@ void GameStartScreen(Game *game) {
             printf(CLEAR_STYLE);
 
             min = 2;
-            max = INT16_MAX;
+            max = INT_MAX;
             is_valid = rows >= min && rows <= max;
 
             if (! is_valid) {
@@ -752,7 +753,7 @@ void GameStartScreen(Game *game) {
             printf(CLEAR_STYLE);
 
             min = 2;
-            max = INT16_MAX;
+            max = INT_MAX;
             is_valid = columns >= min && columns <= max;
 
             if (! is_valid) {
