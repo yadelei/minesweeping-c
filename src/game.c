@@ -688,7 +688,7 @@ void GameStartScreen(Game *game) {
         printf(CLEAR_STYLE);
 
         printf(INPUT_STYLE);
-        scanf("%d", &difficulty);
+        scanf("%d", (int *)&difficulty);
         printf(CLEAR_STYLE);
 
         is_valid = difficulty >= GAME_DIFFICULTY_CUSTOMIZED && difficulty <= GAME_DIFFICULTY_HIGH;
